@@ -26,6 +26,17 @@ MongoClient.connect(
         console.log(error);
       });
 
+    db.collection("users")
+      .deleteOne({
+        name: "Mike"
+      })
+      .then(result => {
+        console.log(result);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
     // db.collection("tasks")
     //   .updateMany(
     //     {
