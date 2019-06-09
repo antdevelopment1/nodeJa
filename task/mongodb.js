@@ -15,14 +15,14 @@ MongoClient.connect(
 
     const db = client.db(databaseName);
 
-    db.collection("users")
-      .updateOne(
+    db.collection("tasks")
+      .updateMany(
         {
-          _id: new ObjectID("5cfc60079d5dbf4fa01b3473")
+          completed: false
         },
         {
           $set: {
-            name: "Mike"
+            completed: true
           }
         }
       )
@@ -32,5 +32,23 @@ MongoClient.connect(
       .catch(error => {
         console.log(error);
       });
+
+    // db.collection("users");
+    //   .updateOne(
+    //     {
+    //       _id: new ObjectID("5cfc60079d5dbf4fa01b3473")
+    //     },
+    //     {
+    //       $inc: {
+    //         age: 1
+    //       }
+    //     }
+    //   )
+    //   .then(result => {
+    //     console.log(result);
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
   }
 );
