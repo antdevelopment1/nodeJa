@@ -15,48 +15,22 @@ MongoClient.connect(
 
     const db = client.db(databaseName);
 
-    // Retrieve Function
-    // db.collection("users").findOne(
-    //   { _id: new ObjectID("5cfc68f707cbdb513c99c00a") },
-    //   (error, user) => {
-    //     if (error) {
-    //       console.log("Unable to find user");
-    //     }
-
-    //     console.log(user);
-    //   }
-    // );
-
-    // db.collection("users")
-    //   .find({ age: 28 })
-    //   .toArray((error, users) => {
-    //     console.log(users);
-    //   });
-
-    // db.collection("users")
-    //   .find({ age: 28 })
-    //   .count((error, count) => {
-    //     console.log(count);
-    //   });
-
-    db.collection("tasks")
-      .find()
-      .sort({ _id: -1 })
-      .toArray((error, tasks) => {
-        console.log(tasks[tasks.length - 1]);
-      });
-
-    db.collection("tasks").findOne(
-      { _id: new ObjectID("5cfc65afae8cb350a2f7dc3d") },
-      (error, task) => {
-        console.log(task);
-      }
-    );
-
-    db.collection("tasks")
-      .find({ completed: false })
-      .toArray((error, tasks) => {
-        console.log(tasks);
+    db.collection("users")
+      .updateOne(
+        {
+          _id: new ObjectID("5cfc60079d5dbf4fa01b3473")
+        },
+        {
+          $set: {
+            name: "Mike"
+          }
+        }
+      )
+      .then(result => {
+        console.log(result);
+      })
+      .catch(error => {
+        console.log(error);
       });
   }
 );
