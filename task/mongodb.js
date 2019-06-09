@@ -27,16 +27,36 @@ MongoClient.connect(
     //   }
     // );
 
-    db.collection("users")
-      .find({ age: 28 })
-      .toArray((error, users) => {
-        console.log(users);
+    // db.collection("users")
+    //   .find({ age: 28 })
+    //   .toArray((error, users) => {
+    //     console.log(users);
+    //   });
+
+    // db.collection("users")
+    //   .find({ age: 28 })
+    //   .count((error, count) => {
+    //     console.log(count);
+    //   });
+
+    db.collection("tasks")
+      .find()
+      .sort({ _id: -1 })
+      .toArray((error, tasks) => {
+        console.log(tasks[tasks.length - 1]);
       });
 
-    db.collection("users")
-      .find({ age: 28 })
-      .count((error, count) => {
-        console.log(count);
+    db.collection("tasks").findOne(
+      { _id: new ObjectID("5cfc65afae8cb350a2f7dc3d") },
+      (error, task) => {
+        console.log(task);
+      }
+    );
+
+    db.collection("tasks")
+      .find({ completed: false })
+      .toArray((error, tasks) => {
+        console.log(tasks);
       });
   }
 );
