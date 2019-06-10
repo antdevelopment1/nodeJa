@@ -71,18 +71,18 @@ const Task = mongoose.model("Task", {
 });
 
 // Creating a task instance
-// const task = new Task({
-//   description: "Finish current node js section",
-//   completed: true
-// });
+const task = new Task({
+  description: "Finish current node js section",
+  completed: true
+});
 
-// Using a built in method of this instance from mongoose
-// task
-//   .save()
-//   .then(() => {
-//     console.log(task);
-//   })
-//   .catch(error => {
-//     console.log("error", error);
-//   });
+Using a built in method of this instance from mongoose
+task
+  .save()
+  .then(() => {
+    console.log(task);
+  })
+  .catch(error => {
+    console.log("error", error);
+  });
 // This is a new instance of User
