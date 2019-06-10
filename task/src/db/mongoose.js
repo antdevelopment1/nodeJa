@@ -63,20 +63,28 @@ me.save()
 // Task class model
 const Task = mongoose.model("Task", {
   description: {
-    type: String
+    type: String,
+    required: true,
+    trim: true
   },
   completed: {
-    type: Boolean
+    type: Boolean,
+    default: false
   }
 });
 
 // Creating a task instance
+// const task = new Task({
+//   description: "Finish current node js section",
+//   completed: true
+// });
+
 const task = new Task({
-  description: "Finish current node js section",
+  description: "Have fun      "
   completed: true
 });
 
-Using a built in method of this instance from mongoose
+// Using a built in method of this instance from mongoose
 task
   .save()
   .then(() => {
