@@ -4,9 +4,10 @@ const auth = require("../middleware/auth");
 const router = express.Router();
 
 router.get("/users/me", auth, async (req, res) => {
+  console.log(req.user)
   res.send(req.user);
 
-  //   Traditional proise chainging code
+  //   Traditional promise chainging code
   //   User.find({})
   //     .then(users => {
   //       res.send(users);
@@ -21,11 +22,12 @@ router.get("/users/:id", async (req, res) => {
 
   try {
     const user = await User.findById(_id);
-    // console.log(user);
     if (!user) {
       return res.status(404).send();
     }
+    res.send(user)
   } catch (error) {
+    console.log(error)
     res.status(500).send();
   }
   // Traditional Promise Chaining Code
@@ -44,7 +46,7 @@ router.get("/users/:id", async (req, res) => {
 });
 
 router.post("/users", async (req, res) => {
-  //   console.log(req.body);
+  console.log(req.body);
   const user = new User(req.body);
   try {
     await user.save();
