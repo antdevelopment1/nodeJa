@@ -18,7 +18,7 @@
   "homepage": "https://github.com/antdevelopment1/nodeJs#readme",
   "dependencies": {
     "chalk": "^2.4.1",
-    "validator": "^10.8.0",
+    "validator": "^13.7.0",
     "yargs": "^12.0.2"
   }
 }
